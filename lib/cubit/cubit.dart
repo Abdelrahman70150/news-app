@@ -1,6 +1,4 @@
-import 'dart:math';
 
-import 'package:flutter/animation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/network/remote/dio_helper.dart';
