@@ -5,6 +5,7 @@ import 'package:news_app/style/conts/colors.dart';
 
 class MyThemeData {
  static ThemeData myLightTheme = ThemeData(
+   primarySwatch: Colors.green,
    scaffoldBackgroundColor: Colors.white,
    primaryColor: myMainGreenColor,
    appBarTheme: const AppBarTheme(
@@ -12,9 +13,10 @@ class MyThemeData {
      backgroundColor: myMainGreenColor,
      centerTitle: true,
      systemOverlayStyle: SystemUiOverlayStyle(
-       statusBarColor: myMainGreenColor, // <-- SEE HERE
-         statusBarBrightness: Brightness.light,
-       systemNavigationBarIconBrightness: Brightness.light//<-- For Android SEE HERE (dark icons)
+       statusBarIconBrightness: Brightness.light,
+       statusBarBrightness: Brightness.light,
+       statusBarColor: Colors.transparent// <-- SEE HERE
+       //<-- For Android SEE HERE (dark icons)
      ),
      shape: RoundedRectangleBorder(
        borderRadius: BorderRadius.vertical(
@@ -23,14 +25,19 @@ class MyThemeData {
      ),
    ),
    textTheme: TextTheme(
-     bodyMedium: GoogleFonts.poppins(
+     bodyLarge: GoogleFonts.poppins(
        fontSize: 22,
        fontWeight:FontWeight.bold,
        color: myMainTextColor,
      ),
-    bodySmall: GoogleFonts.poppins(
+     bodyMedium: GoogleFonts.poppins(
        fontSize: 14,
        fontWeight:FontWeight.bold,
+       color: myMainTextColor,
+     ),
+     bodySmall: GoogleFonts.poppins(
+       fontSize: 10,
+
        color: myMainTextColor,
      ),
    ),
