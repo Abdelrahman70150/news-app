@@ -9,7 +9,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String dropDownValue='English';
+  String dropDownLangValue='English';
+  String dropDownThemeValue='Light';
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +39,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             Text(
               'Language',
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             SizedBox(height: 20,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: DropdownButtonFormField(
-                value: dropDownValue,
+                value: dropDownLangValue,
                 decoration: const InputDecoration(
                   enabledBorder: OutlineInputBorder( //<-- SEE HERE
                     borderSide: BorderSide(color: myMainGreenColor, width: 2),
@@ -58,7 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 dropdownColor: Colors.white,
                   onChanged: (String? newValue){
                     setState(() {
-                      dropDownValue=newValue!;
+                      dropDownLangValue=newValue!;
                     });
                   },
                 items: <String>['English','Arabic'].map<DropdownMenuItem<String>>(
@@ -68,7 +69,49 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         child: Text(
                           value!,
                           style: TextStyle(
-                          color: dropDownValue == value ? myMainGreenColor : Colors.black
+                          color: dropDownLangValue == value ? myMainGreenColor : Colors.black
+                          ),
+                        ),
+                      );
+                    }
+                ).toList(),
+              ),
+            ),
+            SizedBox(height: 70,),
+            Text(
+              'Theme',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DropdownButtonFormField(
+                value: dropDownThemeValue,
+                decoration: const InputDecoration(
+                  enabledBorder: OutlineInputBorder( //<-- SEE HERE
+                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder( //<-- SEE HERE
+                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+                dropdownColor: Colors.white,
+                onChanged: (String? newValue){
+                  setState(() {
+                    dropDownThemeValue=newValue!;
+                  });
+                },
+                items: <String>['Light','Dark'].map<DropdownMenuItem<String>>(
+                        (String? value ){
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value!,
+                          style: TextStyle(
+                              color: dropDownThemeValue == value ?
+                              myMainGreenColor : Colors.black,
                           ),
                         ),
                       );

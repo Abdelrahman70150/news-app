@@ -43,4 +43,42 @@ class MyThemeData {
    ),
 
  );
+
+ static ThemeData myDarkTheme = ThemeData(
+   scaffoldBackgroundColor: myDarkScaffoldColor,
+   primaryColor: myMainDarkColor,
+   appBarTheme: const AppBarTheme(
+     toolbarHeight: 70,
+     backgroundColor:myMainDarkColor,
+     centerTitle: true,
+     systemOverlayStyle: SystemUiOverlayStyle(
+         statusBarIconBrightness: Brightness.light,
+         statusBarBrightness: Brightness.light,
+         statusBarColor: Colors.transparent// <-- SEE HERE
+       //<-- For Android SEE HERE (dark icons)
+     ),
+     shape: RoundedRectangleBorder(
+       borderRadius: BorderRadius.vertical(
+         bottom: Radius.circular(40),
+       ),
+     ),
+   ),
+   textTheme: TextTheme(
+     bodyLarge: GoogleFonts.poppins(
+       fontSize: 22,
+       fontWeight:FontWeight.bold,
+       color:Colors.white,
+     ),
+     bodyMedium: GoogleFonts.poppins(
+       fontSize: 14,
+       fontWeight:FontWeight.bold,
+       color: Colors.white,
+     ),
+     bodySmall: GoogleFonts.poppins(
+       fontSize: 10,
+       color: Colors.white,
+     ),
+   ),
+
+ );
 }

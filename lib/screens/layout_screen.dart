@@ -16,17 +16,31 @@ class LayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(
-      create: (context)=>NewsCubit()
-      ,
+      create: (context)=>NewsCubit(),
       child: BlocConsumer<NewsCubit , NewsStates>(
-        listener: (context, states){},
-        builder: (context, states){
+        listener: (context, state){},
+        builder: (context, state){
           var cubit = NewsCubit.get(context);
           return Scaffold(
               appBar: AppBar(
                 title: const Text('News App'),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: IconButton(
+                      icon: Icon(
+                          Icons.brightness_2,
+                      ),
+                      onPressed: (){
+                    NewsCubit.get(context).changeAppMode();
+                      },
+
+                    ),
+                  )
+                ],
               ),
               drawer: Drawer(
+                backgroundColor: Colors.white,
                 child: ListView(
                   // Important: Remove any padding from the ListView.
                   padding: EdgeInsets.zero,
@@ -43,11 +57,11 @@ class LayoutScreen extends StatelessWidget {
                       leading: Icon(
                         Icons.list,
                         size: 35,
-                        color: Colors.black,
+                        color:Colors.black,
                       ),
                       title:  Text(
                           'Categories',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black)),
+                          style: Theme.of(context).textTheme.bodyLarge),
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -56,9 +70,9 @@ class LayoutScreen extends StatelessWidget {
                       leading: Icon(
                         Icons.settings,
                         size: 35,
-                        color: Colors.black,
+                        color:Colors.black,
                       ),
-                      title:  Text('Settings',style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.black)),
+                      title:  Text('Settings',style: Theme.of(context).textTheme.bodyLarge),
                       onTap: () {
                         Navigator.pushNamed(context, SettingsScreen.routName);
                       },

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/shared/reuseable_components/components.dart';
+import 'package:news_app/style/conts/colors.dart';
 
 class ScienceScreen extends StatelessWidget {
   static const String routName = 'science screen';
@@ -35,7 +36,9 @@ class ScienceScreen extends StatelessWidget {
             ),
             body:  ConditionalBuilder(
               condition: state is! GetScienceLoadingState,
-              fallback: (context)=>Center(child: CircularProgressIndicator(),),
+              fallback: (context)=>Center(child: CircularProgressIndicator(
+                color: myMainGreenColor,
+              ),),
               builder: (context)=>ListView.separated(
                 itemCount: list.length,
                 separatorBuilder: (context, index)=>Divider(height:1 ,),

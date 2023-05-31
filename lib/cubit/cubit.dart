@@ -8,6 +8,7 @@ class NewsCubit extends Cubit<NewsStates>{
 
   NewsCubit() : super (NewsInitialStates());
 
+
   static NewsCubit get(context) => BlocProvider.of(context);
 
 
@@ -113,6 +114,16 @@ class NewsCubit extends Cubit<NewsStates>{
        emit(GetScienceErrorState(error));
      });
    }
+
+
+    bool isDark= true;
+   void changeAppMode(){
+     emit(ChangeAppModeLoadingState());
+     isDark =! isDark;
+     print(isDark);
+     emit(ChangeAppModeSuccessState());
+   }
+
 
 
 }

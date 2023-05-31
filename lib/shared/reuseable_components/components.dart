@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/style/conts/colors.dart';
 
 class BuildArticleWidget extends StatelessWidget {
 dynamic article;
@@ -18,14 +19,15 @@ BuildArticleWidget({required this.article, required this.nullImage});
           SizedBox(height: 10,),
           Text(
             article["author"] ==null ? '' : "${article["author"]}",
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: myMainGreenColor),
           ),
+          SizedBox(height: 10,),
           Text(
             "${article['title']}",
             style:Theme.of(context).textTheme.bodyMedium),
           Text(
             '${article["publishedAt"].toString().substring(0,10)}',
-            style: Theme.of(context).textTheme.bodySmall,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey),
             textAlign: TextAlign.end,
           ),
 

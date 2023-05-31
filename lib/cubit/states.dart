@@ -57,6 +57,10 @@ class GetScienceErrorState extends NewsStates {
 
 class GetScienceSuccessState extends NewsStates {}
 
+class ChangeAppModeLoadingState extends NewsStates {}
+
+class ChangeAppModeSuccessState extends NewsStates {}
+
 
 
 
