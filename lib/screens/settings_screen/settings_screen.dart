@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/style/conts/colors.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -14,24 +15,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = NewsCubit.get(context);
     return  Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
-        leading: const Icon(
-          Icons.menu,
-          size: 34,
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 12.0),
-            child: Icon(
+
+        title: const Text('Sports'),
+
+        actions: [
+          IconButton(
+            icon: Icon(
               Icons.search,
-              size: 34,
+              size: 30,
+            ),
+            onPressed: (){
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: Icon(
+                  cubit.themeMode==ThemeMode.light ? Icons.brightness_2_outlined : Icons.brightness_2),
+              onPressed: (){
+                NewsCubit.get(context).changeAppMode();
+              },
 
             ),
           ),
         ],
       ),
+
       body:Padding(
         padding: const EdgeInsets.all(28.0),
         child: Column(

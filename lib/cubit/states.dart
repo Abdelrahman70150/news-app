@@ -61,6 +61,11 @@ class ChangeAppModeLoadingState extends NewsStates {}
 
 class ChangeAppModeSuccessState extends NewsStates {}
 
+class GetThemeFromSharedLoadingState extends NewsStates{}
+
+class GetThemeFromSharedSuccessState extends NewsStates{}
+
+
 
 
 

@@ -1,6 +1,8 @@
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/states.dart';
+import 'package:news_app/network/local/shared_pref.dart';
 import 'package:news_app/network/remote/dio_helper.dart';
 import 'package:news_app/style/conts/api_url/api_url.dart';
 
@@ -24,7 +26,6 @@ class NewsCubit extends Cubit<NewsStates>{
           "apiKey" :"f664ed17c384485490b22ba71c8aba77",
         }).then((value) {
       sports = value?.data["articles"];
-      print(sports[0]["title"]);
       emit(GetSportsSuccessState());
     }).catchError((error){
       print(error.toString());
@@ -116,14 +117,29 @@ class NewsCubit extends Cubit<NewsStates>{
    }
 
 
-    bool isDark= true;
    void changeAppMode(){
      emit(ChangeAppModeLoadingState());
-     isDark =! isDark;
-     print(isDark);
+     if(themeMode==ThemeMode.light){
+       SharedPref.setTheme("dark");
+       themeMode= ThemeMode.dark;
+     }else if(themeMode==ThemeMode.dark){
+       SharedPref.setTheme("light");
+       themeMode = ThemeMode.light;
+     }
      emit(ChangeAppModeSuccessState());
    }
+   ThemeMode themeMode= ThemeMode.light;
 
-
-
+    void  getThemeFromShared (){
+      emit(GetThemeFromSharedLoadingState());
+  String myTheme = SharedPref.getTheme();
+    if(myTheme=="dark"){
+      themeMode=ThemeMode.dark;
+      print(myTheme);
+      }else{
+      themeMode=ThemeMode.light;
+      print(myTheme);
+    }
+    emit(GetThemeFromSharedSuccessState());
+}
 }
