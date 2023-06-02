@@ -17,9 +17,7 @@ static const String routName = 'sports screen';
         var list =NewsCubit.get(context).sports;
         return Scaffold(
           appBar: AppBar(
-
             title: const Text('Sports'),
-
             actions: [
               IconButton(
                 icon: Icon(
@@ -44,10 +42,11 @@ static const String routName = 'sports screen';
             ],
           ),
           body:ConditionalBuilder(
-            condition: state is! GetSportsLoadingState ,
+            condition: list.isNotEmpty ,
             builder: (context)=> ListView.separated(
               physics: BouncingScrollPhysics(),
-                itemBuilder: (context,index)=> BuildArticleWidget(
+                itemBuilder: (context,index)=>
+                    BuildArticleWidget(
                     article: list[index],
                 nullImage: "https://media.istockphoto.com/id/995133698/vector/background-screen-saver-on-soccer-sports-news-sports-news-live-on-world-map-background.jpg?s=612x612&w=0&k=20&c=kTjV3OcONpNQw3QhShzQmALMmUp7jTA2gOUis-URQfs="),
                 separatorBuilder: (context,index)=>Divider(height: 1,),

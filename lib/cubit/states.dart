@@ -65,6 +65,17 @@ class GetThemeFromSharedLoadingState extends NewsStates{}
 
 class GetThemeFromSharedSuccessState extends NewsStates{}
 
+class GetSearchLoadingState extends NewsStates {}
+
+class GetSearchErrorState extends NewsStates {
+  final String Error;
+
+  GetSearchErrorState(this.Error);
+
+}
+
+class GetSearchSuccessState extends NewsStates {}
+
 
 
 

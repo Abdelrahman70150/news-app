@@ -7,6 +7,7 @@ import 'package:news_app/screens/enviroment_screen/enviroment_screen.dart';
 import 'package:news_app/screens/health_screen/health_screen.dart';
 import 'package:news_app/screens/politics_screen/politics_screen.dart';
 import 'package:news_app/screens/science_screen/science_screen.dart';
+import 'package:news_app/screens/search_screen/search_screen.dart';
 import 'package:news_app/screens/settings_screen/settings_screen.dart';
 import 'package:news_app/screens/sports_screen/sports_screen.dart';
 import 'package:news_app/style/conts/colors.dart';
@@ -23,18 +24,28 @@ class LayoutScreen extends StatelessWidget {
             appBar: AppBar(
               title: const Text('News App'),
               actions: [
+                IconButton(
+                  icon: Icon(
+                      cubit.themeMode==ThemeMode.light ? Icons.brightness_2_outlined : Icons.brightness_2,
+                  ),
+                  onPressed: (){
+                NewsCubit.get(context).changeAppMode();
+                  },
+
+                ),
                 Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.only(right:8.0),
                   child: IconButton(
                     icon: Icon(
-                        cubit.themeMode==ThemeMode.light ? Icons.brightness_2_outlined : Icons.brightness_2,
+                     Icons.search,
+                      size: 30,
                     ),
                     onPressed: (){
-                  NewsCubit.get(context).changeAppMode();
+                      Navigator.pushNamed(context, SearchScreen.routName);
                     },
 
                   ),
-                )
+                ),
               ],
             ),
             drawer: Drawer(
@@ -78,7 +89,6 @@ class LayoutScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             body:Padding(
               padding: const EdgeInsets.all(18.0),
               child: SingleChildScrollView(

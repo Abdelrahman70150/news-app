@@ -19,7 +19,7 @@ class NewsCubit extends Cubit<NewsStates>{
   void getSports(){
     emit(GetSportsLoadingState());
     DioHelper.getData(
-        url: apiUrl,
+        url: newsApiUrl,
         query: {
           "country": "us",
           "category" : "sports",
@@ -38,7 +38,7 @@ class NewsCubit extends Cubit<NewsStates>{
   void getPolitics(){
     emit(GetPoliticsLoadingState());
     DioHelper.getData(
-        url: apiUrl,
+        url: newsApiUrl,
         query: {
           "country" : "us",
           "category" :"politics",
@@ -61,7 +61,7 @@ class NewsCubit extends Cubit<NewsStates>{
   void getHealth(){
     emit(GetHealthLoadingState());
     DioHelper.getData(
-        url: apiUrl,
+        url: newsApiUrl,
         query: {
           "country":"us",
           "category": "health",
@@ -73,7 +73,7 @@ class NewsCubit extends Cubit<NewsStates>{
     }).catchError(
         (error){
           print(error.toString());
-          emit(GetHealthErrorState(error));
+          emit(GetHealthErrorState(error.toString()));
         }
     );
   }
@@ -83,7 +83,7 @@ class NewsCubit extends Cubit<NewsStates>{
   void getBusiness(){
     emit(GetBusinessLoadingState());
     DioHelper.getData(
-        url: apiUrl,
+        url: newsApiUrl,
         query: {
           "country":"us",
           "category":"business",
@@ -93,7 +93,7 @@ class NewsCubit extends Cubit<NewsStates>{
           emit(GetBusinessSuccessState());
     }).catchError((error){
       print(error.toString());
-      emit(GetBusinessErrorState(error));
+      emit(GetBusinessErrorState(error.toString()));
     });
   }
 
@@ -102,7 +102,7 @@ class NewsCubit extends Cubit<NewsStates>{
    void getScience(){
      emit(GetScienceLoadingState());
      DioHelper.getData(
-         url: apiUrl,
+         url: newsApiUrl,
          query: {
            "country":"us",
            "category":"science",
@@ -112,10 +112,28 @@ class NewsCubit extends Cubit<NewsStates>{
            emit(GetScienceSuccessState());
      }).catchError((error){
        print(error.toString());
-       emit(GetScienceErrorState(error));
+       emit(GetScienceErrorState(error.toString()));
      });
    }
 
+
+   List<dynamic> search =[];
+
+   void getSearch(String value){
+     emit(GetSearchLoadingState());
+     DioHelper.getData(
+         url: newsSearchApiUrl,
+         query: {
+           "q": value,
+           "apiKey":"f664ed17c384485490b22ba71c8aba77",
+         }
+     ).then((value) {
+       search=value?.data["articles"];
+       emit(GetScienceSuccessState());
+     }).catchError((error){
+       emit(GetSearchErrorState(error.toString()));
+     });
+   }
 
    void changeAppMode(){
      emit(ChangeAppModeLoadingState());

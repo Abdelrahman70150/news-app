@@ -11,6 +11,7 @@ import 'package:news_app/screens/health_screen/health_screen.dart';
 import 'package:news_app/screens/layout_screen.dart';
 import 'package:news_app/screens/politics_screen/politics_screen.dart';
 import 'package:news_app/screens/science_screen/science_screen.dart';
+import 'package:news_app/screens/search_screen/search_screen.dart';
 import 'package:news_app/screens/settings_screen/settings_screen.dart';
 import 'package:news_app/screens/sports_screen/sports_screen.dart';
 import 'package:news_app/style/theming/theming.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         EnviromentScreen.routName: (c) => EnviromentScreen(),
         ScienceScreen.routName: (c) => ScienceScreen(),
         SettingsScreen.routName: (c) => SettingsScreen(),
+        SearchScreen.routName:(c)=>SearchScreen(),
       },
       initialRoute: LayoutScreen.routName,
       theme: MyThemeData.myLightTheme,
