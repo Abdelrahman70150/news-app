@@ -160,4 +160,34 @@ class NewsCubit extends Cubit<NewsStates>{
     }
     emit(GetThemeFromSharedSuccessState());
 }
+
+String? imageUrl ;
+    String? authorName;
+    String? title;
+    String? description;
+    String? url;
+    String? urlToImage;
+    String? puplishedAt;
+   late String content;
+
+
+    void getNewData({
+      required String AuthorName,
+      required String Title,
+      required String Description,
+      required String Url,
+      required String UrlToImage,
+      required String PuplishedAt,
+      required String Content,})
+    {
+      authorName= AuthorName;
+      title=Title;
+      description=Description;
+      url=Url;
+      urlToImage=UrlToImage;
+      puplishedAt=PuplishedAt;
+      content=Content;
+    }
+  List <dynamic> newsContentScreenList =[];
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/cubit/cubit.dart';
 import 'package:news_app/style/conts/colors.dart';
 
+
 class SettingsScreen extends StatefulWidget {
   static const String routName = 'settings screen';
 
@@ -58,12 +59,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               padding: const EdgeInsets.all(8.0),
               child: DropdownButtonFormField(
                 value: dropDownLangValue,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   enabledBorder: OutlineInputBorder( //<-- SEE HERE
-                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                    borderSide: BorderSide(color: NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor,
+                        width: 2),
                   ),
                   focusedBorder: OutlineInputBorder( //<-- SEE HERE
-                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                    borderSide: BorderSide(color: NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor, width: 2),
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -81,7 +83,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         child: Text(
                           value!,
                           style: TextStyle(
-                          color: dropDownLangValue == value ? myMainGreenColor : Colors.black
+                          color: dropDownLangValue == value ?NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor : Colors.black
                           ),
                         ),
                       );
@@ -99,12 +101,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
               padding: const EdgeInsets.all(8.0),
               child: DropdownButtonFormField(
                 value: dropDownThemeValue,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   enabledBorder: OutlineInputBorder( //<-- SEE HERE
-                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                    borderSide: BorderSide(color: NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor,width: 2),
                   ),
                   focusedBorder: OutlineInputBorder( //<-- SEE HERE
-                    borderSide: BorderSide(color: myMainGreenColor, width: 2),
+                    borderSide: BorderSide(color: NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor, width: 2),
                   ),
                   filled: true,
                   fillColor: Colors.white,
@@ -123,7 +125,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           value!,
                           style: TextStyle(
                               color: dropDownThemeValue == value ?
-                              myMainGreenColor : Colors.black,
+                               NewsCubit.get(context).themeMode == ThemeMode.light ? myMainGreenColor : myMainDarkColor:Colors.black,
                           ),
                         ),
                       );

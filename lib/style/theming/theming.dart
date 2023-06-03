@@ -29,11 +29,14 @@ class MyThemeData {
        fontSize: 22,
        fontWeight:FontWeight.bold,
        color: myMainTextColor,
+
      ),
      bodyMedium: GoogleFonts.poppins(
        fontSize: 14,
        fontWeight:FontWeight.bold,
        color: myMainTextColor,
+         wordSpacing:1.5,
+         height:1.5
      ),
      bodySmall: GoogleFonts.poppins(
        fontSize: 10,
@@ -73,6 +76,8 @@ class MyThemeData {
        fontSize: 14,
        fontWeight:FontWeight.bold,
        color: Colors.white,
+         wordSpacing:1.5,
+         height:1.5
      ),
      bodySmall: GoogleFonts.poppins(
        fontSize: 10,

@@ -9,6 +9,7 @@ import 'package:news_app/screens/business_screen/business_screen.dart';
 import 'package:news_app/screens/enviroment_screen/enviroment_screen.dart';
 import 'package:news_app/screens/health_screen/health_screen.dart';
 import 'package:news_app/screens/layout_screen.dart';
+import 'package:news_app/screens/news_details_screen/news_details_screen.dart';
 import 'package:news_app/screens/politics_screen/politics_screen.dart';
 import 'package:news_app/screens/science_screen/science_screen.dart';
 import 'package:news_app/screens/search_screen/search_screen.dart';
@@ -17,6 +18,8 @@ import 'package:news_app/screens/sports_screen/sports_screen.dart';
 import 'package:news_app/style/theming/theming.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'screens/webview_screen/webview_screen.dart';
 
 
 
@@ -58,7 +61,9 @@ class MyApp extends StatelessWidget {
         EnviromentScreen.routName: (c) => EnviromentScreen(),
         ScienceScreen.routName: (c) => ScienceScreen(),
         SettingsScreen.routName: (c) => SettingsScreen(),
-        SearchScreen.routName:(c)=>SearchScreen(),
+        SearchScreen.routName:(c)=>const SearchScreen(),
+        NewsDetailsScreen.routName :(c)=>NewsDetailsScreen(),
+        WebViewScreen.routName : (c)=>WebViewScreen(),
       },
       initialRoute: LayoutScreen.routName,
       theme: MyThemeData.myLightTheme,
